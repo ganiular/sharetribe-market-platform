@@ -271,19 +271,19 @@ export const ListingPageComponent = props => {
   const productURL = `${config.marketplaceRootURL}${location.pathname}${location.search}${location.hash}`;
   const schemaPriceMaybe = price
     ? {
-        price: intl.formatNumber(convertMoneyToNumber(price), {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        }),
-        priceCurrency: price.currency,
-      }
+      price: intl.formatNumber(convertMoneyToNumber(price), {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }),
+      priceCurrency: price.currency,
+    }
     : {};
   const currentStock = currentListing.currentStock?.attributes?.quantity || 0;
   const schemaAvailability = !currentListing.currentStock
     ? null
     : currentStock > 0
-    ? 'https://schema.org/InStock'
-    : 'https://schema.org/OutOfStock';
+      ? 'https://schema.org/InStock'
+      : 'https://schema.org/OutOfStock';
 
   const availabilityMaybe = schemaAvailability ? { availability: schemaAvailability } : {};
 
@@ -352,6 +352,10 @@ export const ListingPageComponent = props => {
               intl={intl}
             />
 
+            <SectionTextMaybe
+              text={publicData.extraFeatures}
+              heading={intl.formatMessage({ id: 'ListingPage.extraFeaturesTitle' })}
+            />
             <SectionMapMaybe
               geolocation={geolocation}
               publicData={publicData}
