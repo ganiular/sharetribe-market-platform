@@ -21,6 +21,7 @@ import EditListingPricingPanel from './EditListingPricingPanel/EditListingPricin
 import EditListingPricingAndStockPanel from './EditListingPricingAndStockPanel/EditListingPricingAndStockPanel';
 
 import css from './EditListingWizardTab.module.css';
+import EditListingExtraFeaturesPanel from './EditListingExtraFeaturesPanel/EditListingExtraFeaturesPanel';
 
 export const DETAILS = 'details';
 export const PRICING = 'pricing';
@@ -29,6 +30,7 @@ export const DELIVERY = 'delivery';
 export const LOCATION = 'location';
 export const AVAILABILITY = 'availability';
 export const PHOTOS = 'photos';
+export const EXTRAFEATURES = 'extra-features';
 
 // EditListingWizardTab component supports these tabs
 export const SUPPORTED_TABS = [
@@ -39,6 +41,7 @@ export const SUPPORTED_TABS = [
   LOCATION,
   AVAILABILITY,
   PHOTOS,
+  EXTRAFEATURES,
 ];
 
 const pathParamsToNextTab = (params, tab, marketplaceTabs) => {
@@ -248,6 +251,13 @@ const EditListingWizardTab = props => {
           images={images}
           onImageUpload={onImageUpload}
           onRemoveImage={onRemoveImage}
+        />
+      );
+    }
+    case EXTRAFEATURES: {
+      return (
+        <EditListingExtraFeaturesPanel
+          {...panelProps(EXTRAFEATURES)}
         />
       );
     }
